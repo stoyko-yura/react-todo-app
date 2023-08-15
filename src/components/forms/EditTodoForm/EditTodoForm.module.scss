@@ -1,0 +1,12 @@
+@import '~/mixins';
+
+.editTodoForm {
+  width: 100%;
+  @include flexbox($direction: column);
+  row-gap: var(--padding-lg);
+
+  .controls {
+    width: 100%;
+    @include flexbox($alignItems: center, $justifyContent: flex-end);
+  }
+}

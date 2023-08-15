@@ -1,21 +1,25 @@
 @import 'fonts';
 @import 'themes';
 @import 'reset';
-@import 'fonts';
+@import 'variables';
+@import 'mixins';
 
-:root {
-  font-family: Inter, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-size: 16px;
+:root,
+html {
+  @include defaultFont();
+  @include scrollbar();
 }
 
 body {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary-color);
+  color: var(--text-color);
   background-color: var(--bg-color);
+}
+
+main {
+  margin-top: 100px;
+  padding: var(--padding-md);
+  @include flexbox($direction: column, $alignItems: center, $justifyContent: center);
+  row-gap: var(--padding-lg);
 }

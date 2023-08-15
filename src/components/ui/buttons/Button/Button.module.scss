@@ -1,0 +1,45 @@
+@import '~/mixins';
+
+.button {
+  padding: var(--padding-md);
+  height: fit-content;
+  border-radius: var(--radius-md);
+  color: var(--text-color);
+  background-color: var(--sub-alt-color);
+  @include defaultFont();
+  @include flexbox($justifyContent: center, $alignItems: center);
+  column-gap: var(--padding-md);
+  transition: 0.2s linear;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--sub-alt-color);
+    background-color: var(--text-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      color: var(--text-color);
+      background-color: var(--sub-alt-color);
+    }
+  }
+}
+
+.isFull {
+  width: 100%;
+}
+
+.sm {
+  padding: var(--padding-sm);
+  border-radius: var(--radius-sm);
+}
+.md {
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
+}
+.lg {
+  padding: var(--padding-lg);
+  border-radius: var(--radius-lg);
+}

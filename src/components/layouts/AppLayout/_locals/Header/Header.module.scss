@@ -1,0 +1,12 @@
+@import '~/mixins';
+
+.header {
+  padding: var(--padding-md);
+  height: var(--header-height);
+  @include flexbox($justifyContent: space-between, $alignItems: center);
+
+  .controls {
+    @include flexbox();
+    column-gap: var(--padding-sm);
+  }
+}

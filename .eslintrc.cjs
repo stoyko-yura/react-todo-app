@@ -23,6 +23,12 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
+    ],
     '@typescript-eslint/no-shadow': 0,
     '@typescript-eslint/consistent-type-imports': [
       'error',

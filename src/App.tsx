@@ -1,5 +1,14 @@
+import { Todos } from './components/Todos';
+import { CreateTodoForm } from './components/forms';
+import { AppLayout } from './components/layouts';
+
 const App = () => {
-  return <>Hello world</>;
+  return (
+    <AppLayout>
+      <CreateTodoForm />
+      <Todos />
+    </AppLayout>
+  );
 };
 
 export default App;

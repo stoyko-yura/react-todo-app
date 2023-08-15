@@ -1,0 +1,8 @@
+@import '~/mixins';
+
+.createTodoForm {
+  width: 100%;
+  max-width: var(--content-width);
+  @include flexbox();
+  column-gap: var(--padding-md);
+}

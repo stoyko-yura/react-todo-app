@@ -1,0 +1,30 @@
+@import '~/mixins';
+
+.iconButton {
+  width: fit-content;
+  height: fit-content;
+
+  color: var(--text-color);
+  background-color: var(--sub-alt-color);
+  @include flexbox($justifyContent: center, $alignItems: center);
+  transition: 0.2s linear;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--sub-alt-color);
+    background-color: var(--text-color);
+  }
+}
+
+.sm {
+  padding: var(--padding-sm);
+  border-radius: var(--radius-sm);
+}
+.md {
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
+}
+.lg {
+  padding: var(--padding-lg);
+  border-radius: var(--radius-lg);
+}

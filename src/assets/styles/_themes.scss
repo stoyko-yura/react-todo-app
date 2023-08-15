@@ -1,10 +1,39 @@
-:root {
+:root[theme='light'] {
   // hex colors
-  --bg-color: #ebebeb;
-
-  --text-primary-color: #161616;
+  --bg-color: #ffffff;
+  --main-color: #ff360d;
+  --sub-color: #b7b7b7;
+  --sub-alt-color: #ececec;
+  --text-color: #000;
+  --error-color: #d70000;
+  --error-extra-color: #b00000;
 
   // rgb colors
-  --bg-color-rbg: 235, 235, 235;
-  --text-primary-color-rgb: 19, 19, 19;
+  --bg-color-rgb: 255, 255, 255;
+  --main-color-rgb: 255, 54, 13;
+  --sub-color-rgb: 183, 183, 183;
+  --sub-alt-color-rgb: 236, 236, 236;
+  --text-color-rgb: 0, 0, 0;
+  --error-color-rgb: 215, 0, 0;
+  --error-extra-color-rgb: 176, 0, 0;
+}
+
+:root[theme='dark'] {
+  // hex colors
+  --bg-color: #121520;
+  --main-color: #fff;
+  --sub-color: #676e8a;
+  --sub-alt-color: #1b1e2c;
+  --text-color: #fff;
+  --error-color: #da3333;
+  --error-extra-color: #791717;
+
+  // rgb colors
+  --bg-color-rgb: 18, 21, 32;
+  --main-color-rgb: 255, 255, 255;
+  --sub-color-rgb: 103, 110, 138;
+  --sub-alt-color-rgb: 27, 30, 44;
+  --text-color-rgb: 255, 255, 255;
+  --error-color-rgb: 218, 51, 51;
+  --error-extra-color-rgb: 121, 23, 23;
 }

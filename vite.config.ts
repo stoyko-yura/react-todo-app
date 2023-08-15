@@ -13,7 +13,7 @@ export default defineConfig({
       },
       {
         find: '~',
-        replacement: path.resolve('assets/styles')
+        replacement: path.resolve('src/assets/styles')
       }
     ]
   }

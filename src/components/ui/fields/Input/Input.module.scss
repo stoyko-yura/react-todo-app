@@ -1,0 +1,18 @@
+@import '~/mixins';
+
+.inputField {
+  width: 100%;
+  @include flexbox($shrink: unset, $alignItems: center);
+  column-gap: var(--padding-md);
+
+  .input {
+    padding: var(--padding-md);
+    width: 100%;
+    border-radius: var(--radius-md);
+    caret-color: var(--text-color);
+    color: var(--text-color);
+    background-color: var(--sub-alt-color);
+
+    @include defaultFont();
+  }
+}

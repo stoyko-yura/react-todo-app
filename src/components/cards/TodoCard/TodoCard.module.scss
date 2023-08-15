@@ -1,0 +1,30 @@
+@import '~/mixins';
+
+.todoCard {
+  width: 100%;
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
+  background-color: var(--sub-alt-color);
+  @include flexbox($justifyContent: space-between, $alignItems: center);
+  column-gap: var(--padding-lg);
+
+  .createdAt {
+    font-size: 14px;
+    color: var(--sub-color);
+    white-space: pre-wrap;
+  }
+
+  .title {
+    width: 100%;
+    color: var(--text-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .controls {
+    width: fit-content;
+    @include flexbox($alignItems: center);
+    column-gap: var(--padding-sm);
+  }
+}

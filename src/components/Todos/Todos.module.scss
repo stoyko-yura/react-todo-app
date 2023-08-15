@@ -1,0 +1,8 @@
+@import '~/mixins';
+
+.todos {
+  width: 100%;
+  max-width: var(--content-width);
+  @include flexbox($direction: column);
+  row-gap: var(--padding-lg);
+}

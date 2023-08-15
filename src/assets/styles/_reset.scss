@@ -6,3 +6,19 @@
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
+
+ul {
+  list-style: none;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
