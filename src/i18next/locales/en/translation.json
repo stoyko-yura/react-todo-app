@@ -1,0 +1,15 @@
+{
+  "createTodoForm": {
+    "placeholder": "Enter todo",
+    "submitButton": "Add"
+  },
+  "editTodoForm": {
+    "modalTitle": "Edit todo",
+    "placeholder": "Todo",
+    "submitButton": "Submit"
+  },
+  "todosList": {
+    "doing": "Doing: {{doingTodos.length}}",
+    "accepted": "Accepted: {{acceptedTodos.length}}"
+  }
+}

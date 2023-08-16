@@ -1,5 +1,6 @@
 import { IconCircleCheck } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Input } from '@/components/ui';
 import { useAppDispatch } from '@/hooks';
@@ -14,9 +15,11 @@ interface EditTodoFormProps {
 }
 
 export const EditTodoForm = ({ todo, onSubmit }: EditTodoFormProps) => {
-  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const { register, handleSubmit } = useForm<TodoItem>({ defaultValues: { ...todo } });
+
+  const dispatch = useAppDispatch();
 
   const handleSubmitForm = (values: TodoItem) => {
     const params: TodoItem = { ...values, isAccepted: false, createdAt: new Date() };
@@ -28,11 +31,11 @@ export const EditTodoForm = ({ todo, onSubmit }: EditTodoFormProps) => {
 
   return (
     <form className={styles.editTodoForm} onSubmit={handleSubmit(handleSubmitForm)}>
-      <Input placeholder='Todo' {...register('title')} />
+      <Input placeholder={t('editTodoForm.placeholder')} {...register('title')} />
 
       <div className={styles.controls}>
         <Button endIcon={<IconCircleCheck />} type='submit'>
-          Save
+          {t('editTodoForm.submitButton')}
         </Button>
       </div>
     </form>

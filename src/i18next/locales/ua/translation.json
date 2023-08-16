@@ -1,0 +1,15 @@
+{
+  "createTodoForm": {
+    "placeholder": "Введіть задачу",
+    "submitButton": "Добавити"
+  },
+  "editTodoForm": {
+    "modalTitle": "Редагування задачі",
+    "placeholder": "Задача",
+    "submitButton": "Зберегти"
+  },
+  "todosList": {
+    "doing": "У процесі: {{doingTodos.length}}",
+    "accepted": "Завершені: {{acceptedTodos.length}}"
+  }
+}

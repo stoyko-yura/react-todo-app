@@ -1,5 +1,6 @@
 import { IconCheck, IconEdit, IconTrash, IconX } from '@tabler/icons-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { EditTodoForm } from '@/components/forms';
 import { IconButton, Modal } from '@/components/ui';
@@ -15,6 +16,8 @@ interface TodoCardProps {
 }
 
 export const TodoCard = ({ todo }: TodoCardProps) => {
+  const { t } = useTranslation();
+
   const [isModalOpened, setModalOpen] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
@@ -43,7 +46,7 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
 
   return (
     <>
-      <Modal isOpen={isModalOpened} onClose={handleCloseModal}>
+      <Modal isOpen={isModalOpened} title={t('editTodoForm.modalTitle')} onClose={handleCloseModal}>
         <EditTodoForm todo={todo} onSubmit={handleCloseModal} />
       </Modal>
 

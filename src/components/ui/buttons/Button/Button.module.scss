@@ -1,9 +1,8 @@
 @import '~/mixins';
 
 .button {
-  padding: var(--padding-md);
+  min-width: 40px;
   height: fit-content;
-  border-radius: var(--radius-md);
   color: var(--text-color);
   background-color: var(--sub-alt-color);
   @include defaultFont();

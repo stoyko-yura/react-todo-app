@@ -1,5 +1,6 @@
 import { IconNotes, IconPlus } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Input } from '@/components/ui';
 import { useAppDispatch } from '@/hooks';
@@ -9,6 +10,8 @@ import type { TodoItem } from '@/types';
 import styles from './CreateTodoForm.module.scss';
 
 export const CreateTodoForm = () => {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -36,11 +39,11 @@ export const CreateTodoForm = () => {
       <Input
         startIcon={<IconNotes />}
         {...register('title', { required: true, minLength: 1 })}
-        placeholder='Enter new todo'
+        placeholder={t('createTodoForm.placeholder')}
       />
 
       <Button disabled={isValidForm} endIcon={<IconPlus />} type='submit'>
-        Add Todo
+        {t('createTodoForm.submitButton')}
       </Button>
     </form>
   );
