@@ -1,3 +1,3 @@
 export * from './store';
-export * from './useScrollVissible';
+export * from './useScrollOverflow';
 export * from './useTheme';

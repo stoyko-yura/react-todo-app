@@ -14,14 +14,17 @@ interface TodosListProps {
 }
 
 export const TodosList = ({ title, todos }: TodosListProps) => {
-  const [ref, isScrollVissible] = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
+  const { ref, isScrollVissible } = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
 
   return (
-    <>
-      <h3>{title}</h3>
+    <div className={styles.todosList}>
+      <div className={styles.header}>
+        <h3>{title}</h3>
+      </div>
+
       <ul
         ref={ref}
-        className={cn(styles.todosList, { [styles.isScrollVissible]: isScrollVissible })}
+        className={cn(styles.list, { [styles.isScrollVissible]: isScrollVissible })}
         style={{ maxHeight: `${MAX_LIST_HEIGHT}px` }}
       >
         {todos.map((todo) => {
@@ -32,6 +35,6 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };

@@ -2,12 +2,22 @@
 
 .todosList {
   width: 100%;
-  overflow-y: auto;
   @include flexbox($direction: column);
   row-gap: var(--padding-md);
 
-  li {
+  .header {
+    @include flexbox($alignItems: center, $justifyContent: space-between);
+  }
+
+  .list {
     width: 100%;
+    overflow-y: auto;
+    @include flexbox($direction: column);
+    row-gap: var(--padding-md);
+
+    li {
+      width: 100%;
+    }
   }
 }
 
