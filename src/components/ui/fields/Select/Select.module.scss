@@ -1,0 +1,46 @@
+@import '~/mixins';
+
+.select {
+  width: 100%;
+  position: relative;
+  user-select: none;
+
+  .selected {
+    padding: var(--padding-md);
+    border-radius: var(--radius-md);
+    color: var(--text-color);
+    background-color: var(--sub-alt-color);
+    @include flexbox($alignItems: center, $justifyContent: space-between);
+    transition: 0.2s linear;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--sub-alt-color);
+      background-color: var(--main-color);
+    }
+  }
+
+  .options {
+    margin-top: var(--padding-md);
+    padding: var(--padding-md);
+    width: 100%;
+    border: 1px solid var(--sub-color);
+    border-radius: var(--radius-md);
+    color: var(--text-color);
+    background-color: var(--sub-alt-color);
+    position: absolute;
+    z-index: var(--input-index);
+
+    .option {
+      padding: var(--padding-sm);
+      width: 100%;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+
+      &:hover {
+        color: var(--sub-alt-color);
+        background-color: var(--main-color);
+      }
+    }
+  }
+}
