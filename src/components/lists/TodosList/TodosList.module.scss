@@ -7,6 +7,10 @@
 
   .header {
     @include flexbox($alignItems: center, $justifyContent: space-between);
+
+    .controls {
+      width: 30%;
+    }
   }
 
   .list {

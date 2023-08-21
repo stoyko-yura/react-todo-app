@@ -1,12 +1,13 @@
 import cn from 'classnames';
+import { useState } from 'react';
 
 import { TodoCard } from '@/components/cards';
-import { useScrollOverflow } from '@/hooks';
-import type { TodoItem } from '@/types';
+import { Select } from '@/components/ui';
+import { MAX_LIST_HEIGHT, SORT_KEYS } from '@/constants';
+import { useScrollOverflow, useSortTodos } from '@/hooks';
+import type { SortKeys, TodoItem } from '@/types';
 
 import styles from './TodosList.module.scss';
-
-const MAX_LIST_HEIGHT = 300;
 
 interface TodosListProps {
   title?: string;
@@ -16,10 +17,22 @@ interface TodosListProps {
 export const TodosList = ({ title, todos }: TodosListProps) => {
   const { ref, isScrollVissible } = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
 
+  const [sortKey, setSortKey] = useState<SortKeys>('alphabet');
+
+  useSortTodos(todos, sortKey);
+
   return (
     <div className={styles.todosList}>
       <div className={styles.header}>
         <h3>{title}</h3>
+
+        <div className={styles.controls}>
+          <Select
+            options={SORT_KEYS}
+            selected={sortKey}
+            onSelect={(option) => setSortKey(option as SortKeys)}
+          />
+        </div>
       </div>
 
       <ul
