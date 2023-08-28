@@ -10,6 +10,12 @@
   },
   "todosList": {
     "doing": "У процесі: {{doingTodos.length}}",
-    "accepted": "Завершені: {{acceptedTodos.length}}"
+    "accepted": "Завершені: {{acceptedTodos.length}}",
+    "sortKeys": {
+      "alphabet": "Алфавит А-Я",
+      "alphabet-reversed": "Алфавит Я-А",
+      "date": "Новые",
+      "date-reversed": "Старые"
+    }
   }
 }

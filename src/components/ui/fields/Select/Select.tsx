@@ -1,19 +1,20 @@
 import { IconChevronDown, IconChevronUp } from '@tabler/icons-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useClickOutside } from '@/hooks';
 
 import styles from './Select.module.scss';
 
 interface SelectProps {
-  selected: string;
+  defaultValue?: string;
   options: string[];
   onSelect: (option: string) => void;
 }
 
-export const Select = ({ selected, options, onSelect }: SelectProps) => {
+export const Select = ({ defaultValue = '', options, onSelect }: SelectProps) => {
   const selectRef = useRef<HTMLDivElement>(null);
 
+  const [selected, setSelected] = useState<string>(defaultValue || '');
   const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   const handleToggleDropdownOpen = () => {
@@ -21,11 +22,19 @@ export const Select = ({ selected, options, onSelect }: SelectProps) => {
   };
 
   const handleSelectOption = (option: string) => {
+    setSelected(option);
     onSelect(option);
     setDropdownOpen(false);
   };
 
   useClickOutside(selectRef, () => setDropdownOpen(false));
+
+  useEffect(() => {
+    setSelected(defaultValue);
+    onSelect(defaultValue);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultValue]);
 
   return (
     <div ref={selectRef} className={styles.select}>

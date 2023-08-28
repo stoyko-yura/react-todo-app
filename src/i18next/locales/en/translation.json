@@ -10,6 +10,12 @@
   },
   "todosList": {
     "doing": "Doing: {{doingTodos.length}}",
-    "accepted": "Accepted: {{acceptedTodos.length}}"
+    "accepted": "Accepted: {{acceptedTodos.length}}",
+    "sortKeys": {
+      "alphabet": "Alphabet A-Z",
+      "alphabet-reversed": "Alphabet Z-A",
+      "date": "Newest",
+      "date-reversed": "Oldest"
+    }
   }
 }

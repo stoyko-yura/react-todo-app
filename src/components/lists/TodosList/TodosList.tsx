@@ -1,9 +1,10 @@
 import cn from 'classnames';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { TodoCard } from '@/components/cards';
 import { Select } from '@/components/ui';
-import { MAX_LIST_HEIGHT, SORT_KEYS } from '@/constants';
+import { MAX_LIST_HEIGHT } from '@/constants';
 import { useScrollOverflow, useSortTodos } from '@/hooks';
 import type { SortKeys, TodoItem } from '@/types';
 
@@ -15,11 +16,23 @@ interface TodosListProps {
 }
 
 export const TodosList = ({ title, todos }: TodosListProps) => {
+  const { t } = useTranslation();
+
+  const translatedSortKeys = t('todosList.sortKeys', { returnObjects: true });
+
   const { ref, isScrollVissible } = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
 
-  const [sortKey, setSortKey] = useState<SortKeys>('alphabet');
+  const [selectedSortKey, setSelectedSortKey] = useState<string>(
+    Object.keys(t('todosList.sortKeys', { returnObjects: true }))[0]
+  );
 
-  useSortTodos(todos, sortKey);
+  const handleOnSelect = (option: string) => {
+    setSelectedSortKey(
+      Object.keys(translatedSortKeys)[Object.values(translatedSortKeys).indexOf(option)]
+    );
+  };
+
+  useSortTodos(todos, selectedSortKey as SortKeys);
 
   return (
     <div className={styles.todosList}>
@@ -28,9 +41,9 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
 
         <div className={styles.controls}>
           <Select
-            options={SORT_KEYS}
-            selected={sortKey}
-            onSelect={(option) => setSortKey(option as SortKeys)}
+            defaultValue={Object.values(translatedSortKeys)[0]}
+            options={Object.values(translatedSortKeys)}
+            onSelect={handleOnSelect}
           />
         </div>
       </div>
