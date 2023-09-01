@@ -1,25 +1,28 @@
 import type { SortKeys, TodoItem } from '@/types';
 
-export const useSortTodos = (todos: TodoItem[], sortKey: SortKeys) => {
+export const sortTodos = (todos: TodoItem[], sortKey: SortKeys) => {
+  const sortedTodos = [...todos];
+
   switch (sortKey) {
     case 'alphabet': {
-      todos.sort((todoA, todoB) => {
+      sortedTodos.sort((todoA, todoB) => {
         if (todoA.title < todoB.title) return -1;
         if (todoA.title > todoB.title) return 1;
         return 0;
       });
+
       break;
     }
     case 'alphabet-reversed': {
-      todos.sort((todoA, todoB) => {
-        if (todoA.title > todoB.title) return -1;
-        if (todoA.title < todoB.title) return 1;
+      sortedTodos.sort((todoA, todoB) => {
+        if (todoB.title < todoA.title) return -1;
+        if (todoB.title > todoA.title) return 1;
         return 0;
       });
       break;
     }
     case 'date': {
-      todos.sort((todoA, todoB) => {
+      sortedTodos.sort((todoA, todoB) => {
         const todoATime = new Date(
           todoA.isAccepted ? todoA.acceptedAt! : todoA.createdAt
         ).getTime();
@@ -32,7 +35,7 @@ export const useSortTodos = (todos: TodoItem[], sortKey: SortKeys) => {
       break;
     }
     case 'date-reversed': {
-      todos.sort((todoA, todoB) => {
+      sortedTodos.sort((todoA, todoB) => {
         const todoATime = new Date(
           todoA.isAccepted ? todoA.acceptedAt! : todoA.createdAt
         ).getTime();
@@ -44,8 +47,9 @@ export const useSortTodos = (todos: TodoItem[], sortKey: SortKeys) => {
       });
       break;
     }
-    default: {
+    default:
       break;
-    }
   }
+
+  return sortedTodos;
 };

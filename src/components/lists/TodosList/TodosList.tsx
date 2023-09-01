@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { TodoCard } from '@/components/cards';
 import { Select } from '@/components/ui';
 import { MAX_LIST_HEIGHT } from '@/constants';
-import { useScrollOverflow, useSortTodos } from '@/hooks';
+import { useScrollOverflow } from '@/hooks';
 import type { SortKeys, TodoItem } from '@/types';
-import { groupTodos } from '@/utils';
+import { groupTodos, sortTodos } from '@/utils';
 
 import styles from './TodosList.module.scss';
 
@@ -18,27 +18,25 @@ interface TodosListProps {
 
 export const TodosList = ({ title, todos }: TodosListProps) => {
   const { t } = useTranslation();
+  const { ref, isScrollVissible } = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
 
   const translatedSortKeys = t('todosList.sortKeys', { returnObjects: true });
 
-  const { ref, isScrollVissible } = useScrollOverflow<HTMLUListElement>(MAX_LIST_HEIGHT);
-
-  const [selectedSortKey, setSelectedSortKey] = useState<string>(
-    Object.keys(t('todosList.sortKeys', { returnObjects: true }))[0]
+  const [selectedSortKey, setSelectedSortKey] = useState<SortKeys>(
+    Object.keys(t('todosList.sortKeys', { returnObjects: true }))[0] as SortKeys
   );
 
+  const sortedTodos = sortTodos(todos, selectedSortKey);
   const groupedTodos = groupTodos(
-    todos,
+    sortedTodos,
     selectedSortKey.includes('alphabet') ? 'alphabet' : 'date'
   );
 
   const handleOnSelect = (option: string) => {
     setSelectedSortKey(
-      Object.keys(translatedSortKeys)[Object.values(translatedSortKeys).indexOf(option)]
+      Object.keys(translatedSortKeys)[Object.values(translatedSortKeys).indexOf(option)] as SortKeys
     );
   };
-
-  useSortTodos(todos, selectedSortKey as SortKeys);
 
   return (
     <div className={styles.todosList}>
@@ -59,13 +57,13 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
         className={cn(styles.list, { [styles.isScrollVissible]: isScrollVissible })}
         style={{ maxHeight: `${MAX_LIST_HEIGHT}px` }}
       >
-        {Object.keys(groupedTodos).map((todoDateString, index) => {
+        {Object.entries(groupedTodos).map(([todoKey, todos], index) => {
           return (
             <div key={index} className={styles.listGroup}>
-              <p>{todoDateString}</p>
+              <p>{todoKey}</p>
 
               <ul className={styles.list}>
-                {groupedTodos[todoDateString].map((todo) => {
+                {todos.map((todo) => {
                   return (
                     <li key={todo.id}>
                       <TodoCard todo={todo} />
