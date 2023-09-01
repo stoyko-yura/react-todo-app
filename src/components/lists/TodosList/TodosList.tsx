@@ -7,6 +7,7 @@ import { Select } from '@/components/ui';
 import { MAX_LIST_HEIGHT } from '@/constants';
 import { useScrollOverflow, useSortTodos } from '@/hooks';
 import type { SortKeys, TodoItem } from '@/types';
+import { groupTodos } from '@/utils';
 
 import styles from './TodosList.module.scss';
 
@@ -24,6 +25,11 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
 
   const [selectedSortKey, setSelectedSortKey] = useState<string>(
     Object.keys(t('todosList.sortKeys', { returnObjects: true }))[0]
+  );
+
+  const groupedTodos = groupTodos(
+    todos,
+    selectedSortKey.includes('alphabet') ? 'alphabet' : 'date'
   );
 
   const handleOnSelect = (option: string) => {
@@ -53,11 +59,21 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
         className={cn(styles.list, { [styles.isScrollVissible]: isScrollVissible })}
         style={{ maxHeight: `${MAX_LIST_HEIGHT}px` }}
       >
-        {todos.map((todo) => {
+        {Object.keys(groupedTodos).map((todoDateString, index) => {
           return (
-            <li key={todo.id}>
-              <TodoCard todo={todo} />
-            </li>
+            <div key={index} className={styles.listGroup}>
+              <p>{todoDateString}</p>
+
+              <ul className={styles.list}>
+                {groupedTodos[todoDateString].map((todo) => {
+                  return (
+                    <li key={todo.id}>
+                      <TodoCard todo={todo} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           );
         })}
       </ul>
