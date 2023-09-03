@@ -5,8 +5,9 @@
   },
   "editTodoForm": {
     "modalTitle": "Edit todo",
-    "placeholder": "Todo",
-    "submitButton": "Submit"
+    "inputPlaceholder": "Todo",
+    "submitButton": "Submit",
+    "colorInputPlaceholder": "Priority color:"
   },
   "todosList": {
     "doing": "Doing: {{doingTodos.length}}",

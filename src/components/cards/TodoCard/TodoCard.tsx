@@ -9,6 +9,8 @@ import { todoActions } from '@/store';
 import type { TodoItem } from '@/types';
 import { convertDate } from '@/utils';
 
+import { ColorCard } from '..';
+
 import styles from './TodoCard.module.scss';
 
 interface TodoCardProps {
@@ -51,6 +53,8 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
       </Modal>
 
       <div className={styles.todoCard}>
+        <ColorCard isDisabled color={todo.priorityColor} />
+
         <p className={styles.createdAt}>
           {convertDate(todo.isAccepted ? todo.acceptedAt! : todo.createdAt)}
         </p>

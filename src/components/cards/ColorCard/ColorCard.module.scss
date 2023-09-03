@@ -1,0 +1,22 @@
+.colorCard {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.isDisabled {
+  cursor: default;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.isTransparent {
+  border: 1px solid var(--sub-color);
+}

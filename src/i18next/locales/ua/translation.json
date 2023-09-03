@@ -5,8 +5,9 @@
   },
   "editTodoForm": {
     "modalTitle": "Редагування задачі",
-    "placeholder": "Задача",
-    "submitButton": "Зберегти"
+    "inputPlaceholder": "Задача",
+    "submitButton": "Зберегти",
+    "colorInputPlaceholder": "Колір пріоритетності:"
   },
   "todosList": {
     "doing": "У процесі: {{doingTodos.length}}",
