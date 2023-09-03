@@ -1,0 +1,21 @@
+@import '~/mixins';
+
+.colorInput {
+  width: 100%;
+  @include flexbox($alignItems: center, $justifyContent: space-between);
+
+  .header {
+    padding: var(--padding-md);
+    @include flexbox($alignItems: center);
+    column-gap: var(--padding-md);
+  }
+
+  .colors {
+    width: fit-content;
+    padding: var(--padding-md);
+    border-radius: var(--radius-md);
+    background-color: var(--sub-alt-color);
+    @include flexbox($alignItems: center, $justifyContent: center);
+    column-gap: var(--padding-sm);
+  }
+}
