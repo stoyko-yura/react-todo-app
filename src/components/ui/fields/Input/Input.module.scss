@@ -14,5 +14,9 @@
     background-color: var(--sub-alt-color);
 
     @include defaultFont();
+
+    &:invalid {
+      border: 2px solid var(--error-color);
+    }
   }
 }

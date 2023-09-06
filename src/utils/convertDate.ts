@@ -1,18 +1,18 @@
-export const convertDate = (date: string | Date): string => {
-  if (typeof date === 'string') date = new Date(date);
+export const dateToLocalIso = (date: Date) => {
+  const timezoneOffset = new Date().getTimezoneOffset() * 60_000;
+  const localIsoTime = new Date(new Date(date).getTime() - timezoneOffset);
 
-  let day: string = String(date.getDate());
-  let month: string = String(date.getMonth() + 1);
-  const year: string = String(date.getFullYear());
+  return localIsoTime;
+};
 
-  if (Number(day) < 10) day = `0${day}`;
-  if (Number(month) < 10) month = `0${month}`;
+export const DateToString = (date: Date) => {
+  const dateString = new Date(date).toLocaleTimeString([], {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 
-  let hours: string = String(date.getHours());
-  let minutes: string = String(date.getMinutes());
-
-  if (Number(hours) < 10) hours = `0${hours}`;
-  if (Number(minutes) < 10) minutes = `0${minutes}`;
-
-  return `${day}/${month}/${year} ${hours}:${minutes}`;
+  return dateString;
 };

@@ -8,6 +8,7 @@ import { PRIORITY_COLORS } from '@/constants';
 import { useAppDispatch } from '@/hooks';
 import { todoActions } from '@/store';
 import type { TodoItem } from '@/types';
+import { dateToLocalIso } from '@/utils';
 
 import styles from './EditTodoForm.module.scss';
 
@@ -19,12 +20,17 @@ interface EditTodoFormProps {
 export const EditTodoForm = ({ todo, onSubmit }: EditTodoFormProps) => {
   const { t } = useTranslation();
 
-  const { register, handleSubmit, setValue } = useForm<TodoItem>({ defaultValues: { ...todo } });
+  const { register, handleSubmit, setValue } = useForm({
+    defaultValues: { ...todo }
+  });
 
   const dispatch = useAppDispatch();
 
   const handleSubmitForm = (values: TodoItem) => {
-    const params: TodoItem = { ...values, isAccepted: false, createdAt: new Date() };
+    const params: TodoItem = {
+      ...values,
+      isAccepted: false
+    };
 
     dispatch(todoActions.editTodo(params));
 
@@ -41,6 +47,12 @@ export const EditTodoForm = ({ todo, onSubmit }: EditTodoFormProps) => {
       />
 
       <Input placeholder={t('editTodoForm.inputPlaceholder')} {...register('title')} />
+
+      <Input
+        defaultValue={dateToLocalIso(todo.createdAt).toISOString().split('.')[0]}
+        type='datetime-local'
+        onChange={(e) => setValue('createdAt', new Date(e.target.value))}
+      />
 
       <div className={styles.controls}>
         <Button endIcon={<IconCircleCheck />} type='submit'>

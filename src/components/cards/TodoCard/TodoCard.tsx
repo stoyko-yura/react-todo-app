@@ -7,7 +7,7 @@ import { IconButton, Modal } from '@/components/ui';
 import { useAppDispatch } from '@/hooks';
 import { todoActions } from '@/store';
 import type { TodoItem } from '@/types';
-import { convertDate } from '@/utils';
+import { DateToString } from '@/utils';
 
 import { ColorCard } from '..';
 
@@ -56,7 +56,7 @@ export const TodoCard = ({ todo }: TodoCardProps) => {
         <ColorCard isDisabled color={todo.priorityColor} />
 
         <p className={styles.createdAt}>
-          {convertDate(todo.isAccepted ? todo.acceptedAt! : todo.createdAt)}
+          {todo.isAccepted ? DateToString(todo.acceptedAt!) : DateToString(todo.createdAt)}
         </p>
 
         <p className={styles.title}>{todo.title}</p>
