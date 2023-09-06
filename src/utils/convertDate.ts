@@ -2,6 +2,8 @@ export const dateToLocalIso = (date: Date) => {
   const timezoneOffset = new Date().getTimezoneOffset() * 60_000;
   const localIsoTime = new Date(new Date(date).getTime() - timezoneOffset);
 
+  localIsoTime.setSeconds(0, 0);
+
   return localIsoTime;
 };
 
