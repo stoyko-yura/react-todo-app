@@ -1,0 +1,14 @@
+@import '~/mixins';
+
+.searchTodoForm {
+  width: 100%;
+  height: fit-content;
+  @include flexbox($direction: column);
+  row-gap: var(--padding-md);
+
+  .controls {
+    width: 100%;
+    @include flexbox($alignItems: center, $justifyContent: flex-end);
+    column-gap: var(--padding-md);
+  }
+}

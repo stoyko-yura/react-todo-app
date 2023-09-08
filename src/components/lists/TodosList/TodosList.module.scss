@@ -9,7 +9,9 @@
     @include flexbox($alignItems: center, $justifyContent: space-between);
 
     .controls {
-      width: 30%;
+      width: auto;
+      @include flexbox($alignItems: center, $justifyContent: center);
+      column-gap: var(--padding-md);
     }
   }
 

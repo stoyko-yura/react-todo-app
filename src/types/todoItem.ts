@@ -7,4 +7,8 @@ export interface TodoItem {
   priorityColor?: string;
 }
 
+export interface SearchTodoQuery {
+  searchValue: string;
+}
+
 export type SortKeys = 'alphabet' | 'alphabet-reversed' | 'date' | 'date-reversed';
