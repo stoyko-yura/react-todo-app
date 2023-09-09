@@ -1,0 +1,18 @@
+@import '~/mixins';
+
+.todosGroup {
+  width: 100%;
+  @include flexbox($direction: column);
+  row-gap: var(--padding-md);
+
+  .list {
+    width: 100%;
+    overflow-y: auto;
+    @include flexbox($direction: column);
+    row-gap: var(--padding-md);
+
+    li {
+      width: 100%;
+    }
+  }
+}

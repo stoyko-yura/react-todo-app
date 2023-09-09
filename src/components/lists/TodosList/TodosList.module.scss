@@ -25,12 +25,6 @@
       width: 100%;
     }
   }
-
-  .listGroup {
-    width: 100%;
-    @include flexbox($direction: column);
-    row-gap: var(--padding-md);
-  }
 }
 
 .isScrollVissible {

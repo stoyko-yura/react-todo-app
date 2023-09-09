@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { TodoCard } from '@/components/cards';
 import { SearchTodoForm } from '@/components/forms';
 import { IconButton, Modal, Select } from '@/components/ui';
 import { MAX_LIST_HEIGHT } from '@/constants';
@@ -12,6 +11,7 @@ import type { SortKeys, TodoItem } from '@/types';
 import { groupTodos, searchTodos, sortTodos } from '@/utils';
 
 import styles from './TodosList.module.scss';
+import { TodosGroup } from './_locals';
 
 interface TodosListProps {
   title?: string;
@@ -83,19 +83,9 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
         >
           {Object.entries(groupedTodos).map(([todoKey, todos], index) => {
             return (
-              <div key={index} className={styles.listGroup}>
-                <p>{todoKey}</p>
-
-                <ul className={styles.list}>
-                  {todos.map((todo) => {
-                    return (
-                      <li key={todo.id}>
-                        <TodoCard todo={todo} />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <li key={index}>
+                <TodosGroup title={todoKey} todos={todos} />
+              </li>
             );
           })}
         </ul>
