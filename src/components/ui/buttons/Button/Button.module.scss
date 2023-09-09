@@ -24,6 +24,9 @@
       background-color: var(--sub-alt-color);
     }
   }
+  span {
+    @include flexbox($alignItems: center, $justifyContent: center);
+  }
 }
 
 .isFull {

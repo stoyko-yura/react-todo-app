@@ -5,21 +5,6 @@
   position: relative;
   user-select: none;
 
-  .selected {
-    padding: var(--padding-md);
-    border-radius: var(--radius-md);
-    color: var(--text-color);
-    background-color: var(--sub-alt-color);
-    @include flexbox($alignItems: center, $justifyContent: space-between);
-    transition: 0.2s linear;
-    cursor: pointer;
-
-    &:hover {
-      color: var(--sub-alt-color);
-      background-color: var(--text-color);
-    }
-  }
-
   .options {
     margin-top: var(--padding-md);
     padding: var(--padding-md);

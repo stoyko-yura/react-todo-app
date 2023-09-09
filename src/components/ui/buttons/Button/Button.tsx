@@ -22,9 +22,9 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button className={cn(styles.button, styles[size], { [styles.isFull]: isFull })} {...props}>
-      {startIcon ?? startIcon}
+      {startIcon && <span>{startIcon}</span>}
       {children}
-      {endIcon ?? endIcon}
+      {endIcon && <span>{endIcon}</span>}
     </button>
   );
 };
