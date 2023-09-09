@@ -1,4 +1,4 @@
-import { IconCircleCheck } from '@tabler/icons-react';
+import { IconCalendar, IconCircleCheck, IconNotes } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -46,10 +46,15 @@ export const EditTodoForm = ({ todo, onSubmit }: EditTodoFormProps) => {
         onChange={(color) => setValue('priorityColor', color)}
       />
 
-      <Input placeholder={t('editTodoForm.inputPlaceholder')} {...register('title')} />
+      <Input
+        placeholder={t('editTodoForm.inputPlaceholder')}
+        startIcon={<IconNotes />}
+        {...register('title')}
+      />
 
       <Input
         defaultValue={dateToLocalIso(todo.createdAt).toISOString().split('.')[0]}
+        startIcon={<IconCalendar />}
         type='datetime-local'
         onChange={(e) => setValue('createdAt', new Date(e.target.value))}
       />

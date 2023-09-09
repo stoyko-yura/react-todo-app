@@ -1,4 +1,4 @@
-import { IconCheck, IconEraser } from '@tabler/icons-react';
+import { IconCheck, IconEraser, IconSearch } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
@@ -36,7 +36,11 @@ export const SearchTodoForm = ({ defaultValue, onSave, onClose }: SearchTodoForm
 
   return (
     <form className={styles.searchTodoForm} onSubmit={handleSubmit(handleSubmitForm)}>
-      <Input placeholder={t('searchTodoForm.inputPlaceholder')} {...register('searchValue')} />
+      <Input
+        placeholder={t('searchTodoForm.inputPlaceholder')}
+        startIcon={<IconSearch />}
+        {...register('searchValue')}
+      />
 
       <div className={styles.controls}>
         <Button startIcon={<IconEraser />} type='button' onClick={handleClearForm}>
