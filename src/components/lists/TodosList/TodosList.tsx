@@ -49,7 +49,11 @@ export const TodosList = ({ title, todos }: TodosListProps) => {
 
   return (
     <>
-      <Modal isOpen={isSearchModalOpen} title='Search Todo' onClose={handleCloseSearchModal}>
+      <Modal
+        isOpen={isSearchModalOpen}
+        title={t('todosList.modalTitle')}
+        onClose={handleCloseSearchModal}
+      >
         <SearchTodoForm
           defaultValue={searchValue}
           onClose={handleCloseSearchModal}

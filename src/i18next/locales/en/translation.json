@@ -17,6 +17,12 @@
       "alphabet-reversed": "Alphabet Z-A",
       "date": "Newest",
       "date-reversed": "Oldest"
-    }
+    },
+    "modalTitle": "Search Todo"
+  },
+  "searchTodoForm": {
+    "inputPlaceholder": "Search",
+    "submitButton": "Search",
+    "resetButton": "Reset"
   }
 }

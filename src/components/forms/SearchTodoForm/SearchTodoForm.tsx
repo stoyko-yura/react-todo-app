@@ -1,5 +1,6 @@
 import { IconCheck, IconEraser } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import { Button, Input } from '@/components/ui';
 import type { SearchTodoQuery } from '@/types';
@@ -13,6 +14,8 @@ interface SearchTodoFormProps {
 }
 
 export const SearchTodoForm = ({ defaultValue, onSave, onClose }: SearchTodoFormProps) => {
+  const { t } = useTranslation();
+
   const { register, handleSubmit } = useForm<SearchTodoQuery>({
     defaultValues: { searchValue: defaultValue || '' }
   });
@@ -33,14 +36,14 @@ export const SearchTodoForm = ({ defaultValue, onSave, onClose }: SearchTodoForm
 
   return (
     <form className={styles.searchTodoForm} onSubmit={handleSubmit(handleSubmitForm)}>
-      <Input placeholder='Search' {...register('searchValue')} />
+      <Input placeholder={t('searchTodoForm.inputPlaceholder')} {...register('searchValue')} />
 
       <div className={styles.controls}>
         <Button startIcon={<IconEraser />} type='button' onClick={handleClearForm}>
-          Clear
+          {t('searchTodoForm.resetButton')}
         </Button>
         <Button startIcon={<IconCheck />} type='submit'>
-          Search
+          {t('searchTodoForm.submitButton')}
         </Button>
       </div>
     </form>

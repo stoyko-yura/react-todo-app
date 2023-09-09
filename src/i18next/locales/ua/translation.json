@@ -17,6 +17,12 @@
       "alphabet-reversed": "Алфавіт Я-А",
       "date": "Новіші",
       "date-reversed": "Старіші"
-    }
+    },
+    "modalTitle": "Пошук Задачі"
+  },
+  "searchTodoForm": {
+    "inputPlaceholder": "Пошук",
+    "submitButton": "Пошук",
+    "resetButton": "Обнулити"
   }
 }
